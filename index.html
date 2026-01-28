@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatra Travel Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           
+        }
+
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: black;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 29px;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none; 
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition:  0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: lightgrey;
+        }
+
+        
+        .hero {
+            background: url('./images/yatra2.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .heroContent h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .heroContent p {
+            font-size: 21px;
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 64px 32px;
+        }
+
+        section {
+            scroll-margin-top: 80px;
+        }
+
+        
+        .featureParent {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .featureCard {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .featureCard:hover {
+            transform: translateY(-10px);
+        }
+
+        .featureImg {
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        .featureInfo {
+            padding: 24px;
+        }
+
+        .featureInfo h3 {
+            margin-bottom: 8px;
+            color: #667eea;
+        }
+
+        .featureInfo p {
+            color: #666;
+        }
+
+    
+        .destinationParent {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .destinationCard {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .destinationCard:hover {
+            transform: translateY(-10px);
+        }
+
+        .destinationImg img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        
+        }
+
+        .destinationInfo {
+            padding: 24px;
+        }
+
+        .destinationInfo h3 {
+            margin-bottom: 8px;
+            color: #667eea;
+        }
+
+        .destinationInfo p {
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .price {
+            font-size: 24px;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        
+        .packageCard {
+            background: white;
+            border-radius: 10px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .packageCard h3 {
+            color: #667eea;
+            margin-bottom: 16px;
+        }
+
+        .packageFeatures {
+            list-style: none;
+            margin: 16px 0;
+        }
+
+        .packageFeatures li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .packageFeatures li {
+            margin-bottom: 8px;
+        }
+
+        
+        .formGroup {
+            margin-bottom: 24px;
+        }
+
+        .formGroup label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .formGroup input,
+        .formGroup textarea,
+        .formGroup select {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .formGroup input:focus,
+        .formGroup textarea:focus,
+        .formGroup select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submitBtn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .submitBtn:hover {
+            transform: translateY(-2px);
+        }
+
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal:target {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 32px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+
+        .closeModal {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 32px;
+            color: #666;
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .closeModal:hover {
+            color: #333;
+        }
+
+        .modal-content h2 {
+            color: #667eea;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .link a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 32px;
+            margin-top: 64px;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 16px;
+            font-size: 32px;
+        } 
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home" class="logo">✈️ Yatra</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#packages">Packages</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <section id="home" class="hero">
+        <div class="heroContent">
+            <h1>Explore India with Yatra</h1>
+            <p>Your journey to unforgettable experiences starts here</p>
+            <a href="#destinations" class="btn">Discover Destinations</a>
+        </div>
+    </section>
+
+    
+    <div class="container">
+        <h2>Why Choose Yatra?</h2>
+        <div class="featureParent">
+            <div class="featureCard">
+                <div class="featureImg">🌟</div>
+                <div class="featureInfo">
+                    <h3>Expert Guidance</h3>
+                    <p>20+ years of travel expertise to help plan your perfect vacation</p>
+                </div>
+            </div>
+            <div class="featureCard">
+                <div class="featureImg">💰</div>
+                <div class="featureInfo">
+                    <h3>Best Prices</h3>
+                    <p>Competitive rates and exclusive deals you won't find elsewhere</p>
+                </div>
+            </div>
+            <div class="featureCard">
+                <div class="featureImg">🛡️</div>
+                <div class="featureInfo">
+                    <h3>Safe Travel</h3>
+                    <p>24/7 support and comprehensive travel insurance options</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="destinations" class="container">
+        <h2>Popular Destinations</h2>
+        <div class="destinationParent">
+            <div class="destinationCard">
+                <div class="destinationImg"><img src="./images/images.jpg" alt="Manali Image"></div>
+                <div class="destinationInfo">
+                    <h3>Manali, Himachal Pradesh</h3>
+                    <p>Escape into snow-draped valleys, charming pine forests, and breathtaking Himalayan adventures</p>
+                    <div class="price">From ₹17,999</div>
+                </div>
+            </div>
+            <div class="destinationCard">
+                <div class="destinationImg"><img src="./images/Golden triangle.jpg" alt="Golden Triangle Image"></div>
+                <div class="destinationInfo">
+                    <h3>Jaipur - Agra - Delhi (Golden Triangle)</h3>
+                    <p>Walk through royal palaces, timeless monuments, and India's most iconic heritage wonders</p>
+                    <div class="price">From ₹19,999</div>
+                </div>
+            </div>
+            <div class="destinationCard">
+                <div class="destinationImg"><img src="./images/kerala.jpg" alt="Kerala Image"></div>
+                <div class="destinationInfo">
+                    <h3>Kerala (Munnar • Alleppey • Kochi)</h3>
+                    <p>Discover tranquil backwaters, emerald hills, and the soothing charm of God's Own Country</p>
+                    <div class="price">From ₹24,999</div>
+                </div>
+            </div>
+            <div class="destinationCard">
+                <div class="destinationImg"><img src="./images/Lehladakh.png" alt="LehLadakh Image"></div>
+                <div class="destinationInfo">
+                    <h3>Leh-Ladakh</h3>
+                    <p>Journey across rugged moonlike landscapes, ancient monasteries, and sky-touching mountain passes</p>
+                    <div class="price">From ₹29,999</div>
+                </div>
+            </div>
+            <div class="destinationCard">
+                <div class="destinationImg"><img src="./images/Meghalaya.png" alt="Meghalaya Image"></div>
+                <div class="destinationInfo">
+                    <h3>Meghalaya - Assam</h3>
+                    <p>Explore mystical waterfalls, living root bridges, and lush rain-kissed forests of the Northeast</p>
+                    <div class="price">From ₹27,650</div>
+                </div>
+            </div>
+            <div class="destinationCard">
+                <div class="destinationImg"><img src="./images/Goa.jpg" alt="Goa Image"></div>
+                <div class="destinationInfo">
+                    <h3>Goa</h3>
+                    <p>Unwind on golden beaches where vibrant nightlife meets sunlit serenity and ocean bliss</p>
+                    <div class="price">From ₹9,999</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="packages" class="container">
+        <h2>Travel Packages</h2>
+        
+        <div class="packageCard">
+            <h3>🌟 Basic Explorer - ₹7,999</h3>
+            <ul class="packageFeatures">
+                <li>5 Days / 4 Nights accommodation</li>
+                <li>Round-trip economy flights</li>
+                <li>Airport transfers</li>
+                <li>Daily breakfast</li>
+                <li>City tour guide</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+        </div>
+
+        <div class="packageCard">
+            <h3>💎 Premium Traveler - ₹11,499</h3>
+            <ul class="packageFeatures">
+                <li>7 Days / 6 Nights luxury accommodation</li>
+                <li>Round-trip business class flights</li>
+                <li>Private airport transfers</li>
+                <li>All meals included</li>
+                <li>Personal tour guide</li>
+                <li>3 excursions included</li>
+                <li>Travel insurance</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+        </div>
+
+        <div class="packageCard">
+            <h3>👑 Luxury Elite - ₹22,999</h3>
+            <ul class="packageFeatures">
+                <li>10 Days / 9 Nights 5-star resort</li>
+                <li>Round-trip first class flights</li>
+                <li>Luxury car rental included</li>
+                <li>Gourmet dining experiences</li>
+                <li>Private concierge service</li>
+                <li>Unlimited excursions</li>
+                <li>Spa treatments included</li>
+                <li>Comprehensive travel insurance</li>
+                <li>Photography package</li>
+            </ul>
+            <a href="#contact" class="btn">Book Now</a>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="container">
+        <h2>Contact Us</h2>
+        <form>
+            <div class="formGroup">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="formGroup">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="formGroup">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="formGroup">
+                <label for="destination">Interested Destination</label>
+                <select id="destination">
+                    <option value="" hidden>-Select-</option>
+                    <option value="" >Manali, Himachal Pradesh</option>
+                    <option value="" >Jaipur - Agra - Delhi (Golden Triangle)</option>
+                    <option value="" >Kerala (Munnar • Alleppey • Kochi)</option>
+                    <option value="" >Leh - Ladakh</option>
+                    <option value="" >Meghalaya - Assam</option>
+                    <option value="">Goa</option>
+                </select>
+            </div>
+            <div class="formGroup">
+                <label for="message">Your Message</label>
+                <textarea id="message" rows="5" placeholder="Type message here...."></textarea>
+            </div>
+            <button type="submit" class="submitBtn">Send Message</button>
+        </form>
+    </section>
+
+    
+    <div id="login" class="modal">
+        <div class="modal-content">
+            <a href="#" class="closeModal">×</a>
+            <h2>Login to Yatra</h2>
+            <form action="#">
+                <div class="formGroup">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="formGroup">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="submitBtn">Login</button>
+            </form>
+            <div class="link">
+                <p>Don't have an account? <a href="#signup">Sign up here</a></p>
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="signup" class="modal">
+        <div class="modal-content">
+            <a href="#" class="closeModal">x</a>
+            <h2>Create Account</h2>
+            <form action="#">
+                <div class="formGroup">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" required>
+                </div>
+                <div class="formGroup">
+                    <label for="signup-email">Email Address</label>
+                    <input type="email" id="signup-email" required>
+                </div>
+                <div class="formGroup">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="formGroup">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" required>
+                </div>
+                <button type="submit" class="submitBtn">Sign Up</button>
+            </form>
+            <div class="link">
+                <p>Already have an account? <a href="#login">Login here</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Yatra Travel Agency. All rights reserved.</p>
+        <p>📧 info@Yatra.com | 📞 +91 XXXXX XXXXX</p>
+    </footer>
+</body>
+</html>
