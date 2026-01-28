@@ -40,19 +40,17 @@ ravel-agency-website/
 ## 🖼️ Screenshots
 
 ### Home Page
-![Home Page](screenshots/home.png)
+![Home Page](screenshots/Home.png)
 
-### Services / Destinations Section
-![Services Section](screenshots/services.png)
+### Services / Destinations Sections
+![Services Section1](screenshots/Section1.png)
+![Services Section2](screenshots/Section2.png)
+![Services Section3](screenshots/Section3.png)
+![Services Section4](screenshots/Section4.png)
 
-### Footer Section
-![Footer Section](screenshots/footer.png)
-
----
-
-## 🚀 Live Demo
-Live website (GitHub Pages):  
-👉 *(Add link here after enabling GitHub Pages)*
+### Login and SignUp Section
+![Login Section](screenshots/LoginPage.png)
+![Signup Section](screenshots/SignupPage.png)
 
 ---
 
